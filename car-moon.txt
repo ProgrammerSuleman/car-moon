@@ -1,0 +1,51 @@
+# Fill me in!
+
+# background
+app.background = 'midnightBlue'
+
+# ground and road 
+Rect(0, 260, 400, 140, fill='darkGreen')
+Line(0, 335, 400, 335, fill='grey', lineWidth=70)
+Line(0, 335, 400, 335, fill='gold', lineWidth=5, dashes=True)
+
+# trees in the forest
+def drawTrees(x, y, color):
+    RegularPolygon(x, y + 50, 70, 3, fill=color)
+    RegularPolygon(x, y, 50, 3, fill=color)
+    Rect(x - 20, y + 85, 40, 50, fill='brown')
+drawTrees(55, 140, 'darkGreen')
+drawTrees(190, 145, 'darkGreen')
+drawTrees(315, 130, 'darkGreen')
+drawTrees(115, 135, 'green')
+drawTrees(250, 135, 'green')
+drawTrees(380, 125, 'green')
+
+# moon and cloud
+moon = Circle(185, 45, 40, fill=gradient('white', 'midnightBlue', start = 'left'))
+
+Circle(70, 80, 20, fill='white')
+Circle(90, 90, 20, fill='white')
+Circle(70, 105, 20, fill='white')
+Circle(95, 120, 20, fill='white')
+
+# car body
+Circle(145, 305, 30, fill='red')
+Circle(145, 305, 25, fill='skyBlue')
+Rect(95, 305, 100, 45, fill='red')
+Line(145, 305, 145, 350, lineWidth=3)
+Line(115, 305, 175, 305, lineWidth=2)
+
+# car wheels
+Circle(120, 350, 20, fill=None, border='black')
+carWheels = Star(120, 350, 20, 15, roundness=15)
+
+Circle(170, 350, 20, fill=None, border='black')
+secondWheel = Star(170, 350, 20, 15, roundness=15)
+
+def onMouseMove(mouseX, mouseY):
+    carWheels.rotateAngle += 10 
+    secondWheel.rotateAngle += 10
+    if(moon.centerX >= 400):
+        moon.centerX = 0
+    else:
+        moon.centerX += 10 
